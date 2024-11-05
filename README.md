@@ -1,25 +1,15 @@
-# Cod-Notification-Manager
+# Codrut's Windows Runtime for Delphi -> Notification Manager
 Notification Manager for advanced notifications in Windows 10/11
 
-## Dependencies (provided)
-- Cod.WindowsRuntime
-- Cod.ArrayHelpers
-- Cod.Registry
-- Cod.MesssageConst
+## Source and Dependencies
+This library is part of the [Codrut's Windows Runtime for Delphi](https://github.com/Codrax/Cod-Windows-Runtime), all units can be found there.
 
-## Now 100% feature complete!
-
-## Example demo
-![anim](https://github.com/Codrax/Cod-Notification-Manager/assets/68193064/33026b0f-b11a-4c27-993e-69f6850db506)
-
+Attention! The app must be registered with a TAppRegistration, for futher detalies, look at the Cod Windows Runtime docs.
 
 ## Examples
-### Create notification manager
+### Creating the Notification Manager
 ```
-  Manager := TNotificationManager.Create('App.Test');
-
-  Manager.ApplicationName := 'Amazing application';
-  Manager.ShowInSettings := true;
+  Manager := TNotificationManager.Create;
 ```
 
 ### Creating a notification
@@ -90,6 +80,10 @@ begin
     Value := UserInput.GetStringValue('editbox-id');
 end;
 ```
+
+## Pictures
+![image](https://github.com/user-attachments/assets/d612e2e9-f706-469a-ac4e-85ee5b434c04)
+![anim](https://github.com/Codrax/Cod-Notification-Manager/assets/68193064/33026b0f-b11a-4c27-993e-69f6850db506)
 
 ## Important notes
 - Do not free the `TNotificationManager` until the app will no longer send notification.
