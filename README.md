@@ -14,36 +14,31 @@ Attention! The app must be registered with a TAppRegistration, for futher detali
 
 ### Creating a notification
 ```
-  with TToastContentBuilder.Create do
-    try
-      AddText( TToastValueBindable.Create('title') );
-      AddText( TToastValueString.Create('This is the new notifications engine :)') );;
-      AddAudio(TSoundEventValue.NotificationIM, WinFalse);
+  // Create notification
+  TToastContentBuilder.Create
+    .AddText( TToastValueBindable.Create('title') )
+    .AddText( TToastValueString.Create('This is the new notifications engine :)') )
+    .AddAudio(TSoundEventValue.NotificationIM, WinFalse)
+    .AddHeroImage(TToastValueString.Create('C:\Windows\System32\@facial-recognition-windows-hello.gif'))
+    .AddProgressBar(TToastValueString.Create('Downloading...'), TToastValueBindable.Create('download-pos'))
+    .AddInputTextBox('editbox-id', 'Enter value', 'Response')
+    .AddButton('Cancel', TActivationType.Foreground, 'cancel')
+    .AddButton('View more', TActivationType.Foreground, 'view')
+    .SetActivationType(TActivationType.Protocol)
+    .SetLaunchURI('ms-settings:account')
+    .BuildNotificationAndFree(Notif);
   
-      AddHeroImage(TToastValueString.Create('C:\Windows\System32\@facial-recognition-windows-hello.gif'));
-      AddProgressBar(TToastValueString.Create('Downloading...'), TToastValueBindable.Create('download-pos'));
+  // Set tag
+  Notif.Tag := 'notification1';
 
-      AddInputTextBox('editbox-id', 'Enter value', 'Response');
-  
-      AddButton('Cancel', TActivationType.Foreground, 'cancel');
-      AddButton('View more', TActivationType.Foreground, 'view');
-  
-      // Data
-      Notif := TNotification.Create(GetXML);
-  
-      Notif.Tag := 'notification1';
-  
-      // Data binded values
-      Notif.Data := TNotificationData.Create;
-      Notif.Data['title'] := 'Hello world!';
-      Notif.Data['download-pos'] := '0';
+  // Data binded values
+  Notif.Data := TNotificationData.Create;
+  Notif.Data['title'] := 'Hello world!';
+  Notif.Data['download-pos'] := '0';
 
-      // Events (must be defined in your form class)
-      Notif.OnActivated := NotifActivated;
-      Notif.OnDismissed := NotifDismissed;
-    finally
-      Free;
-    end;
+  // Events (must be defined in your form class)
+  Notif.OnActivated := NotifActivated;
+  Notif.OnDismissed := NotifDismissed;
 ```
 
 ### Pushing notification
