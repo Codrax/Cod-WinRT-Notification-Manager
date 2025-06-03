@@ -26,7 +26,7 @@ Attention! The app must be registered with a TAppRegistration, for futher detali
     .AddButton('View more', TActivationType.Foreground, 'view')
     .SetActivationType(TActivationType.Protocol)
     .SetLaunchURI('ms-settings:account')
-    .BuildNotificationAndFree(Notif);
+    .CreateNotificationAndFree(Notif);
   
   // Set tag
   Notif.Tag := 'notification1';
